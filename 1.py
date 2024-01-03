@@ -23,4 +23,3 @@ subject = ["a", "b", "c", "a"]
 subject = set(subject)
 subject = list(subject)
 print(subject)
-
