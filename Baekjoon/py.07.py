@@ -1,2 +1,2 @@
-id = map(str, input())
+id = input()
 print(id + "??!")
