@@ -1,1 +1,0 @@
-time = randint(5, 51)
