@@ -1,18 +1,18 @@
-S = str(input())
-asc = []
+S = input()
 
-for _ in range(len(S)):
-    asc.append(S[_])
+S_list = []
+for s in S:
+    S_list.append(ord(s))
 
-for _ in asc:
-    asc[_] = ord(asc[_])
-print(asc)
-'''
-alphabet = list(range(97, 123))
-for _ in alphabet:
-    if asc[_] == alphabet[_]:
-        alphabet[_] = (asc[_]).index
+alphabet = []
+for i in range(ord('a'), ord('z') + 1):
+    alphabet.append(i)
+
+alphabet_1 = []
+for a in alphabet:
+    if a in S_list:
+        alphabet_1.append(S_list.index(a))
     else:
-        alphabet[_] = -1
-print(alphabet)     #a = 97 z = 122
-'''
+        alphabet_1.append(-1)
+for result in alphabet_1:
+    print(result, end = ' ')
