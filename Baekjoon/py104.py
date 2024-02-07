@@ -1,12 +1,25 @@
 N = int(input())
 nums = [int(input()) for _ in range(N)]
-reverse_nums = nums[::-1]
-s_nums = []
+stack = []
+flag = True
+number = 1
+plus_minus = []
 
-while len(reverse_nums) > 0:
-    for n in range(1, nums[0] + 1):
-        s_nums.append(n)
-        print('+')
-    reverse_nums.pop()
-    print('-')
-    print(nums)
+for n in nums:
+    while number <= n:
+        stack.append(number)
+        plus_minus.append('+')
+        number += 1
+    
+    if stack[-1] == n:
+        stack.pop()
+        plus_minus.append('-')
+
+    else:
+        print('NO')
+        flag = False
+        break
+
+if flag == True:
+    for pl in plus_minus:
+        print(pl)
