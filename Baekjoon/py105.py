@@ -1,17 +1,13 @@
 N = int(input())
 
-result = 0
-m = 
-while m < N:
-    number = m
-    M = str(m)
-    for i in M:
-        num = int(i)
-        number += num
+for num in range(1, N + 1):
+    number = num
+    num_str = str(num)
+    for i in num_str:
+        number += int(i)
+    
     if number == N:
-        result = number
+        print(num)
         break
-    elif number != N: 
-        m += 1
-        number = 0
-print(result)
+else:
+    print(0)
