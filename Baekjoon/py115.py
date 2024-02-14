@@ -1,29 +1,32 @@
 N = int(input())
 postfix = list(map(str,input().strip()))
 
-alpha = 65
-for n in range(N):
-    chr(alpha) = input()
-
+alpha = {}
+for n in postfix:
+    if n.isupper():
+        if n not in alpha:
+            alpha[n] = input()
 for i in range(len(postfix)):
-    if postfix[i] not in '*/+-':
-        postfix[i] = input()
-print(ord('A'))
-# stack = []
+    if postfix[i] in alpha:
+        postfix[i] = alpha[postfix[i]]
 
-# for tk in fx:
-#     if tk.isnumeric():
-#         stack.a1ppend(int(tk))
-#     elif tk != ' ':
-#         n2 = stack.pop()
-#         n1 = stack.pop()
-#         if tk == '+':
-#             res = n1 + n2
-#         elif tk == '-':
-#             res = n1 - n2
-#         elif tk == '*':
-#             res = n1 * n2
-#         elif tk == '/':
-#             res = n1 // n2
-#         stack.append(res)
-# print(result)
+stack = []
+
+for tk in postfix:
+    if tk not in '*/+-':
+        stack.append(int(tk))
+    elif tk != ' ':
+        n2 = stack.pop()
+        n1 = stack.pop()
+        if tk == '+':
+            res = n1 + n2
+        elif tk == '-':
+            res = n1 - n2
+        elif tk == '*':
+            res = n1 * n2
+        elif tk == '/':
+            res = n1 / n2
+        stack.append(res)
+
+result = stack[0]
+print('%.2f' %result)
