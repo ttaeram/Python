@@ -1,32 +1,38 @@
 import sys
+from collections import deque
 input = sys.stdin.readline
 
 N = int(input())
-stack = []
 
+q = deque()
 for n in range(N):
     command = input().rstrip()
     if 'push' in command:
-        a = int(command[5:])
-        stack.append(a)
+        q.append(int(command[5:]))
     
     elif command == 'pop':
-        if stack:
-            print(stack.pop())
+        if q:
+            print(q.popleft())
         else:
             print(-1)
     
     elif command == 'size':
-        print(len(stack))
+        print(len(q))
     
     elif command == 'empty':
-        if stack:
+        if q:
             print(0)
         else:
             print(1)
     
-    elif command == 'top':
-        if stack:
-            print(stack[-1])
+    elif command == 'front':
+        if q:
+            print(q[0])
+        else:
+            print(-1)
+    
+    elif command == 'back':
+        if q:
+            print(q[-1])
         else:
             print(-1)
