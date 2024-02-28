@@ -9,9 +9,11 @@ def solution(dartResult):
             a2 = stack.pop()
             a1 = stack.pop()
             stack.append(a1 + a2)
-        if dartResult[i + 1].isnnumeric() == True and dartResult[i].isnumeric() == True:
-            flag = False
-            continue
+            flag = True
+        if dartResult[i].isnumeric() == True:
+            if dartResult[i + 1].isnumeric() == True:
+                flag = False
+                continue
         if dartResult[i].isnumeric():
             stack.append(int(stack.pop()))
         if dartResult[i].isalpha():
