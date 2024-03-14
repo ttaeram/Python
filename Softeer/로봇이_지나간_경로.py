@@ -8,6 +8,12 @@ arr = [list(map(str, input().strip())) for _ in range(H)]
 di = [1, 0, -1, 0]
 dj = [0, 1, 0, -1]
 
+cnt = 1
+for k in range(H):
+    for g in range(W):
+        if arr[k][g] == '#':
+            cnt += 1
+print(cnt)
 for h in range(H):
     for w in range(W):
         if arr[h][w] == '#':
@@ -18,6 +24,7 @@ for h in range(H):
             a, b = h, w
             stack.append((a, b))
             BFS.append((a, b))
+            bp = True
             while stack:
                 a, b = stack.pop()
                 for i in range(4):
@@ -34,4 +41,11 @@ for h in range(H):
                                     stack.append((nii, njj))
                                     arr_r[a][b] = '.'
                                     arr_r[ni][nj] = '.'
-            print(BFS)
+                if len(BFS) >= 2:
+                    for bf in range(len(BFS) - 1):
+                        if abs(BFS[bf][0] - BFS[bf + 1][0]) > 2 or abs(BFS[bf][1] - BFS[bf + 1][1]) > 2:
+                            bp = False
+                if not bp:
+                    break
+            if len(BFS) * 2 == cnt:
+                print(BFS)
