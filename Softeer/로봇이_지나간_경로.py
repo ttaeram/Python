@@ -26,7 +26,7 @@ for h in range(H):
             BFS.append((a, b))
             bp = True
             while stack:
-                a, b = stack.pop()
+                a, b = stack.popleft()
                 for i in range(4):
                     ni = a + di[i]
                     nj = b + dj[i]
@@ -41,6 +41,35 @@ for h in range(H):
                                     stack.append((nii, njj))
                                     arr_r[a][b] = '.'
                                     arr_r[ni][nj] = '.'
+                                    if len(BFS) == 2:
+                                        if BFS[0][0] + 2 == BFS[1][0]:
+                                            fd = 'V'
+                                            x, y = (2, 0)
+                                        elif BFS[0][1] + 2 == BFS[1][1]:
+                                            fd = '>'
+                                            x, y = (0, 2)
+                                        elif BFS[0][0] - 2 == BFS[1][0]:
+                                            fd = '^'
+                                            x, y = (-2, 0)
+                                        elif BFS[0][1] - 2 == BFS[1][1]:
+                                            fd = '<'
+                                            x, y = (0, -2)
+                                            
+                                        nx, ny = nii - BFS[-1][0], njj - BFS[-1][1]
+                                        if (nx, ny) == (x, y):
+                                            print('A', end = '')
+                                            x, y = nx, ny
+
+                                        elif (x, y) == (0, 2) or (x, y) == (0, -2):
+                                            if (nx, ny) == (y, x):
+                                                print('RA', end = '')
+                                            else:
+                                                print('LA', end = '')
+                                        else:
+                                            if (nx, ny) == (y, x):
+                                                print('LA', end = '')
+                                            else:
+                                                print('RA', end = '')
                 if len(BFS) >= 2:
                     for bf in range(len(BFS) - 1):
                         if abs(BFS[bf][0] - BFS[bf + 1][0]) > 2 or abs(BFS[bf][1] - BFS[bf + 1][1]) > 2:
@@ -48,4 +77,7 @@ for h in range(H):
                 if not bp:
                     break
             if len(BFS) * 2 == cnt:
+                print(BFS[0][0] + 1, BFS[0][1] + 1)
+                print(fd)
                 print(BFS)
+                exit(0)
