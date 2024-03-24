@@ -2,6 +2,7 @@ def solution(temperature, t1, t2, a, b, onboard):
     arr = [[int(1e9)] * 51 for _ in range(1001)]
 
     arr[0][temperature + 10] = 0
+    print(arr[0])
     for t, c in enumerate(onboard[1:], 1):
         if c:
             mintemp = t1
