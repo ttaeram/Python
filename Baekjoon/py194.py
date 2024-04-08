@@ -4,21 +4,27 @@ input = sys.stdin.readline
 N, M = map(int, input().split())
 arr = list(map(int, input().split()))
 
-S = sum(arr)
-total = S // M
-tottt = S // (M - 1)
+end = sum(arr)
+start = max(arr)
+ans = end
 
-max_res = 0
-res = 0
-for n in arr:
-    res += n
-    if total <= res < tottt:
-        max_res = max(res, max_res)
-        res = 0
-    if total >= tottt:
-        res -= n
-        max_res = max(res, max_res)
-        res = n
+while start <= end:
+    mid = (start + end) // 2
+    total = 0
+    cnt = 1
+    for n in arr:
+        if total + n > mid:
+            cnt += 1
+            total = 0
+        total += n
 
-ans = max_res
+    if cnt == M:
+        ans = mid
+        end = mid - 1
+    elif cnt > M:
+        start = mid + 1
+    else:
+        ans = mid
+        end = mid - 1
+
 print(ans)
