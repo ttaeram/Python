@@ -28,18 +28,31 @@ for r in range(N):
                             if arr[nx][ny] == color:
                                 stack_1.append((nx, ny))
             cnt_1 += 1
-        elif (r, c) not in check_2:
+        if (r, c) not in check_2:
             stack_2 = deque([(r, c)])
-            while stack_2:
-                a, b = stack_2.popleft()
-                color_ = arr[a][b]
-                if (a, b) not in check_2:
-                    check_2.add((a, b))
-                    for j in range(4):
-                        na = a + dx[j]
-                        nb = b + dy[j]
-                        if 0 <= na < N and 0 <= nb < N:
-                            if (color in odd and arr[nx][ny] in odd) or arr[nx][ny] == color:
-                                stack_2.append((na, nb))
-            cnt_2 += 1
+            color_ = arr[r][c]
+            if color_ == 'B':
+                while stack_2:
+                    a, b = stack_2.popleft()
+                    if (a, b) not in check_2:
+                        check_2.add((a, b))
+                        for k in range(4):
+                            na = a + dx[k]
+                            nb = b + dy[k]
+                            if 0 <= na < N and 0 <= nb < N:
+                                if arr[nx][ny] == 'B':
+                                    stack_2.append((na, nb))
+                cnt_2 += 1
+            elif color_ != 'B':
+                while stack_2:
+                    a, b = stack_2.popleft()
+                    if (a, b) not in check_2:
+                        check_2.add((a, b))
+                        for j in range(4):
+                            na = a + dx[j]
+                            nb = b + dy[j]
+                            if 0 <= na < N and 0 <= nb < N:
+                                if arr[nx][ny] != 'B':
+                                    stack_2.append((na, nb))
+                cnt_2 += 1
 print(cnt_1, cnt_2)
