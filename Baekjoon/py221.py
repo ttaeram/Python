@@ -14,7 +14,14 @@ commands = deque()
 for l in range(L):
     a, b = map(str, input().split())
     commands.append((int(a), b))
-
-while commands:
-    X, C = commands.popleft()
-    for x in range(X):
+stack = [(0, 0, 0, 1, 1)]
+for co in commands:
+    t, command = co
+    for tt in range(t):
+        while stack:
+            r, c, dx, dy, l = stack.popleft()
+            nr = r + dx
+            nc = c + dy
+            if 0 <= nr < N and 0 <= nc < N:
+                if arr[nr][nc] == 0:
+                    
