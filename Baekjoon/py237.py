@@ -6,8 +6,9 @@ N = int(input())
 arr = []
 for i in range(N):
     for j in map(int, input().split()):
-        heapq.heappush(arr, -j)
+        heapq.heappush(arr, j)
+        if len(arr) > N:
+            heapq.heappop(arr)
 
-for a in range(N):
-    b = heapq.heappop(arr)
-print(-b)
+ans = arr[0]
+print(ans)
