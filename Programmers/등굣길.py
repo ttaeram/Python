@@ -1,22 +1,24 @@
-from collections import deque
-
 def solution(m, n, puddles):
-    dx = [0, 1]
-    dy = [1. 0]
     arr = [[0] * m for _ in range(n)]
+    oong = set()
     for i in range(len(puddles)):
         a, b = puddles[i][0] - 1, puddles[i][1] - 1
-        arr[a][b] = -1
-    
-    stack = deque([(0, 0, 0)])
-    while stack:
-        x, y, d = stack.popleft()
-        for i in range(2):
-            nx = x + dx[i]
-            ny = y + dy[i]
-            if nx < n and ny < m:
+        oong.add((b, a))
+    arr[0][0] = 1
+    for r in range(n):
+        for c in range(m):
+            if r == 0 and c == 0:
+                continue
+            if (r, c) in oong:
+                arr[r][c] = 0
+            else:
+                if r == 0:
+                    arr[r][c] = arr[r][c - 1]
+                elif c == 0:
+                    arr[r][c] = arr[r - 1][c]
+                else:
+                    arr[r][c] = arr[r][c - 1] + arr[r - 1][c]
+    return arr[n - 1][m - 1] % 1000000007
 
-    return answer
-
-puddles = [[2, 2]]
-print(solution(4, 3, puddles))
+puddles = []
+print(solution(100, 100, puddles))
