@@ -113,18 +113,18 @@ def explode():
                     cand = [(x, y)]
                     now = ball
 
-        # if len(cand) > 3:
-        #     if now == 1:
-        #         res1 += len(cand)
-        #     elif now == 2:
-        #         res2 += len(cand)
-        #     else:
-        #         res3 += len(cand)
+        if len(cand) > 3 and now != 0:
+            if now == 1:
+                res1 += len(cand)
+            elif now == 2:
+                res2 += len(cand)
+            else:
+                res3 += len(cand)
 
-        #     for ca in cand:
-        #         r, c = ca[0], ca[1]
-        #         arr[r][c] = 0
-        #     flag = False
+            for ca in cand:
+                r, c = ca[0], ca[1]
+                arr[r][c] = 0
+            flag = False
 
         if not flag:
             move()
