@@ -15,11 +15,36 @@ for i in range(N):
             chik.append((i, j))
     arr.append(semi)
 
-def sol():
+check = [0] * len(chik)
+ans = int(1e9)
+
+def sol(idx, cnt):
+    global ans
+
+    if cnt == M:
+        res = 0
+
+        for h in home:
+            d = int(1e9)
+
+            for i in range(len(check)):
+                if check[i]:
+                    num = abs(h[0] - chik[i][0]) + abs(h[1] - chik[i][1])
+                    d = min(d, num)
+            
+            res += d
+        ans = min(res, ans)
+
+        return
     
+    for i in range(idx, len(chik)):
+        if not check[i]:
+            check[i] = 1
+            sol(i+1, cnt+1)
+            check[i] = 0
 
-print(arr)
-print(chik)
-print(home)
+sol(0, 0)
 
-각 집에서 치킨집까지의 거리를 싹 추합해놓고 치킨집 줄여가면서 풀면 되는거 아닐까 싶음
+print(ans)
+
+# 각 집에서 치킨집까지의 거리를 싹 추합해놓고 치킨집 줄여가면서 풀면 되는거 아닐까 싶음
