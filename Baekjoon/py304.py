@@ -6,8 +6,8 @@ input = sys.stdin.readline
 N, M = map(int, input().split())
 arr = [list(map(int, input().split())) for _ in range(N)]
 
-dr = [0, 1, 0, -1]
-dc = [1, 0, -1, 0]
+dr = [-1, 1, 0, 0]
+dc = [0, 0, -1, 1]
 
 def sol():
     Q = deque()
@@ -24,12 +24,10 @@ def sol():
             nr = r + dr[i]
             nc = c + dc[i]
 
-            if nr < 0 or nr >= N or nc < 0 or nc >= M:
-                continue
-
-            if semi[nr][nc] == 0:
-                semi[nr][nc] = 2
-                Q.append((nr, nc))
+            if 0 <= nr < N and 0 <= nc < M:
+                if semi[nr][nc] == 0:
+                    semi[nr][nc] = 2
+                    Q.append((nr, nc))
 
     global ans
     cnt = 0
