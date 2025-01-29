@@ -10,3 +10,4 @@ for _ in range(R):
 
 print(arr)
 print(items)
+print(N, M, R)
