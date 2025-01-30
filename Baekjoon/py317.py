@@ -8,6 +8,8 @@ for _ in range(R):
     a, b, l = map(int, input().split())
     arr.append((a, b, l))
 
+ans = 0
+
 print(arr)
 print(items)
-print(N, M, R)
+print(ans)
