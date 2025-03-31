@@ -1,6 +1,5 @@
 from collections import deque
 
-# 그래프 정의
 graph = [
     [],
     [2, 3, 8],
