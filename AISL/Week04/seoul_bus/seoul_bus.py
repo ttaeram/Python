@@ -31,7 +31,7 @@ def print_stops_by_bus_number(bus_number):
     matched_sorted = matched.sort_values("순번")
 
     for _, row in matched_sorted.iterrows():
-        print(f"[{bus_number}] 버스가 [{row["정류소명"]}]에 정차합니다")
+        print(f"[{bus_number}] 버스가 [{row['정류소명']}]에 정차합니다")
 
 
 def init():
