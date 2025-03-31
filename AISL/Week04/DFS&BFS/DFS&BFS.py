@@ -14,7 +14,7 @@ graph = [
 ]
 
 
-# 1. DFS - 재귀 방식
+# DFS - 재귀 방식
 def dfs_recursive(graph, v, visited):
     visited[v] = 1
     print(v, end=' ')
@@ -24,7 +24,7 @@ def dfs_recursive(graph, v, visited):
             dfs_recursive(graph, i, visited)
 
 
-# 2. DFS - 스택을 이용한 반복 방식
+# DFS - 스택을 이용한 반복 방식
 def dfs_stack(graph, start):
     visited = [0] * len(graph)
     stack = [start]
@@ -40,7 +40,7 @@ def dfs_stack(graph, start):
                     stack.append(i)
 
 
-# 3. BFS - 큐를 이용한 반복 방식
+# BFS - 큐를 이용한 반복 방식
 def bfs_queue(graph, start):
     visited = [0] * len(graph)
     queue = deque([start])
